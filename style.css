@@ -1,0 +1,102 @@
+
+/* Base page layout */
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#6fc8e1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* Main chat container */
+
+.container{
+    width:420px;
+    background:#a4dbe5;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Title */
+
+h1{
+    margin:0 0 15px 0;
+    font-size:22px;
+    color:#2c3e50;
+    text-align:center;
+}
+
+/* Chat box */
+
+#chatBox{
+    height:300px;
+    border:1px solid #dcdcdc;
+    border-radius:6px;
+    padding:10px;
+    overflow-y:auto;
+    background:#f9fafc;
+}
+
+/* Individual message bubble */
+
+.message{
+    background:#4a6cf7;
+    color:white;
+    padding:8px 12px;
+    border-radius:14px;
+    margin:6px 0;
+    display:inline-block;
+    font-size:14px;
+    max-width:75%;
+}
+
+/* Input section */
+
+.inputArea{
+    margin-top:12px;
+    display:flex;
+    gap:8px;
+}
+
+/* Text input */
+
+input{
+    flex:1;
+    padding:9px;
+    border:1px solid #cfd3d8;
+    border-radius:5px;
+    font-size:14px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#4a6cf7;
+}
+
+/* Send button */
+
+button{
+    padding:9px 16px;
+    border:none;
+    border-radius:5px;
+    background:#4a6cf7;
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#3955d1;
+}
+
+/* Moderation feedback text */
+
+#result{
+    margin-top:10px;
+    font-size:13px;
+    color:#d9534f;
+    font-weight:bold;
+}

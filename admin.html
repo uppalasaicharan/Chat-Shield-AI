@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Admin Panel - Chat Moderator</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f5f5f5;
+text-align:center;
+}
+
+.container{
+width:500px;
+margin:auto;
+margin-top:40px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+input{
+width:80%;
+padding:10px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+cursor:pointer;
+}
+
+#rulesList{
+margin-top:20px;
+text-align:left;
+}
+
+.ruleItem{
+padding:8px;
+border-bottom:1px solid #ccc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Admin Panel</h2>
+
+<h3>Add Topic Rule</h3>
+
+<input id="group" placeholder="Group Name (Example: FullStackJava)">
+
+<input id="topics" placeholder="Blocked Topics (comma separated)">
+
+<br>
+
+<button onclick="addRule()">Add Rule</button>
+
+<hr>
+
+<h3>Existing Rules</h3>
+
+<div id="rulesList"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

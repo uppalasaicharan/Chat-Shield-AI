@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>AI Chat Moderator</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🤖 AI Chat Moderator</h2>
+
+<div id="chatBox"></div>
+
+<div class="inputArea">
+<input id="message" placeholder="Type your message...">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+<p id="result"></p>
+
+</div>
+
+<!-- Socket Library -->
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+<script>
+
+// connect to backend socket
+const socket = io("http://localhost:3000");
+
+// send message
+async function sendMessage(){
+
+let messageInput = document.getElementById("message");
+let message = messageInput.value;
+
+if(message.trim() === ""){
+return;
+}
+
+// call moderation API
+let response = await fetch("http://localhost:3000/validateMessage",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({message})
+});
+
+let data = await response.json();
+
+// if message allowed
+if(data.status === "allowed"){
+
+socket.emit("chatMessage", message);
+
+document.getElementById("result").innerText = "";
+
+messageInput.value = "";
+
+}
+else{
+
+document.getElementById("result").innerText = data.reason;
+
+}
+
+}
+
+// receive messages from server
+socket.on("chatMessage",(msg)=>{
+
+let chatBox = document.getElementById("chatBox");
+
+chatBox.innerHTML += "<p>"+msg+"</p>";
+
+});
+
+</script>
+
+</body>
+</html>
